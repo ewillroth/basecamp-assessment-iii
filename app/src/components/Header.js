@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
 
-export class Header extends React.Component {
-    render() {
-        return(
-            <div className="Header" id='header'>
-                <h1>Eric Willroth</h1>
-                <h2>To-do List</h2>
-            </div>
-        );
-    }
+class Header extends React.Component{
+	render(){
+		return(
+			<div className='header'>
+				<h1>Grape!</h1>
+			</div>
+		)
+	}
 }
+
+export default Header;
