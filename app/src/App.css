@@ -1,0 +1,22 @@
+
+#header {
+    background-color: rgb(25, 186, 186);
+    color: #ffffff;
+    font-size: 40px;
+    padding-left: 40px;
+  }
+
+h1 {
+  display: inline;
+}
+
+ul {
+  list-style: none;
+  display: inline;
+}
+
+li {
+margin: 40px 20px;
+float: right;
+}
+
