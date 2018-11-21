@@ -5,10 +5,7 @@ export class Header extends React.Component {
         return(
             <div className="Header" id='header'>
                 <h1>Eric Willroth</h1>
-                <ul>
-                    <li>About</li>
-                    <li>Contact</li>
-                </ul>
+                <h2>To-do List</h2>
             </div>
         );
     }
