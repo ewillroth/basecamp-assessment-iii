@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './components/header';
-
+import List from './components/list';
 
 class App extends React.Component {
 
@@ -10,6 +10,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Header />
+				<List />
 			</div>
 		);
 	}
