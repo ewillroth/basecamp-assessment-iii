@@ -1,0 +1,12 @@
+App
+	Header
+	Body
+		List
+			Checkbox	List Item
+				//checkbox strikesthrough or deletes list item
+			Checkbox	List Item
+			.. ..
+			.. ..
+		Form	Button
+			//button generates new list item and checkbox with value from form
+

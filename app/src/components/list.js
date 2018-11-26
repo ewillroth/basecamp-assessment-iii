@@ -1,54 +1,55 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class List extends React.Component{
+class ListItem extends React.Component{
 	constructor(props){
 		super(props);
-		this.userList=[];
+		this.state={
+			checked: false,
+		}
 	}
 
-	addItem(item){
-		this.userList.push(
-			<div>
-				<Delete />
-				<li>{item}</li>
-			</div>
-		)
+	checked() {
+		if(this.state.checked === false){
+			this.setState({
+			checked: !this.state.checked
+			})
+		}
 	}
 
 	render(){
 		return(
-			<div className = 'body'>
-				<ul>
-					{this.userList}
-				</ul>
-				<Form addItem = {this.addItem} userList = {this.userList}/>
-			</div>
+			this.props.userList.map((item) => <li><Checkbox checked={this.checked()}/>{item}</li>)
 		)
 	}
 }
 
-class Form extends React.Component{
+class List extends React.Component{
 	constructor(props){
 		super(props);
+		this.userList = [];
 		this.state = {
 			inputvalue: '',
-			userList: [],
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.userList = [];
+	}
+
+	addItem(item) {
+		this.userList.push(item);
 	}
 
 	handleChange(event) {
+		event.preventDefault();
 		this.setState({
 			inputvalue: event.target.value
-		})
+		});
 	}
 
 	handleSubmit(event) {
 		console.log('Form value:' + this.state.inputvalue);
 		event.preventDefault();
-		this.props.addItem(this.state.inputvalue);
+		this.addItem(this.state.inputvalue);
 		this.setState({
 			inputvalue: ''
 		});
@@ -56,26 +57,23 @@ class Form extends React.Component{
 
 	render(){
 		return(
-			<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-				<input type='text' name='Add' value={this.state.inputvalue} onChange={this.handleChange}></input>
-				<button>Add</button>
-			</form>
+			<div className = 'body'>
+				<ul>
+					<ListItem userList={this.userList}/>
+				</ul>
+				<form onSubmit={this.handleSubmit} value= {this.state.inputvalue}>
+					<input type='text' name='Add' value={this.state.inputvalue} onChange={this.handleChange}></input>
+					<button>Add</button>
+				</form>
+			</div>
 		)
 	}
 }
 
-class Delete extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			checked: false,
-		}
-	}
+class Checkbox extends React.Component{
 
-	handleChange() {
-		this.setState(
-			{checked: !this.state.checked}
-		)
+	handleChange (){
+		this.props.checked()
 	}
 
 	render(){
@@ -88,6 +86,11 @@ class Delete extends React.Component{
 			</input>
 		)	
 	}
+}
+
+List.propTypes = {
+	checked: PropTypes.func,
+	userList: PropTypes.array,
 }
 
 export default List;

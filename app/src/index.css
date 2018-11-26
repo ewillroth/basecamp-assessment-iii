@@ -32,11 +32,6 @@ form {
   margin-top: 10px;
 }
 
-li {
-  display: inline;
-  margin: 10px;
-}
-
 ul {
   list-style: none;
   padding: 10px;
@@ -52,8 +47,4 @@ button {
 input {
   padding: 2px;
   margin: 2px;
-}
-
-.listItem {
-  margin: 20px;
 }
